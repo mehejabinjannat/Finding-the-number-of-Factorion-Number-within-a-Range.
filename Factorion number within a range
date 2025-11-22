@@ -1,0 +1,39 @@
+public class FactorionInRange {
+
+    // Method to compute factorial of a digit
+    public static int factorial(int n) {
+        int fact = 1;
+        for (int i = 1; i <= n; i++) {
+            fact *= i;
+        }
+        return fact;
+    }
+
+    // Method to check if a number is a Factorion
+    public static boolean isFactorion(int num) {
+        int original = num;
+        int sum = 0;
+
+        while (num > 0) {
+            int digit = num % 10;
+            sum += factorial(digit);
+            num /= 10;
+        }
+
+        return sum == original;
+    }
+
+    public static void main(String[] args) {
+
+        int start = 1;
+        int end = 50000;
+
+        System.out.println("Factorion numbers between " + start + " and " + end + ":");
+
+        for (int i = start; i <= end; i++) {
+            if (isFactorion(i)) {
+                System.out.println(i);
+            }
+        }
+    }
+}
